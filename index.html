@@ -7,8 +7,21 @@
   </head>
   <body>
     <div id="app">
-      
+      <h1>Casa de <span id="greenText">Câmbio</span></h1>
+      <main>
+        <form>
+          <div id="inputArea">
+            <label for="input">Digite a moeda:</label>
+            <input type="text" placeholder="USD" id="input">
+          </div>
+          <button id="searchBtn">Pesquisar</button>
+        </form>
+        <section id="currencyBoard">
+          <h2 id="descriptionTitle"></h2>
+          <div id="currencyValues"></div>
+        </section>
+      </main>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
