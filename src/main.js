@@ -1,4 +1,5 @@
 import './style.css'
+import Swal from 'sweetalert2'
 
 const button = document.querySelector('#searchBtn');
 const input = document.querySelector('#input');
@@ -18,6 +19,12 @@ const setElementsValues = (object) => {
   })
 };
 
+const clearBoardCurreny = () => {
+  description.innerHTML = '';
+  currencyValue.innerHTML = '';
+  input.focus();
+};
+
 button.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -26,10 +33,22 @@ button.addEventListener('click', (event) => {
   fetch(`https://v6.exchangerate-api.com/v6/6004f5bde4e6e16bd8be1f33/latest/${moeda}`)
   .then((response) => response.json())
   .then((data) => {
+    clearBoardCurreny();
     description.innerHTML = `Valores referentes a 1 ${data.base_code}`;
-    const arrayValues = data.conversion_rates;
     setElementsValues(data);
+    input.value = '';
   })
+  .catch(() => {
+    input.value = '';
+    clearBoardCurreny();
+    
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
+  });
 });
 
 
