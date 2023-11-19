@@ -29,7 +29,7 @@ function handleSearch(event) {
 
     input.value = '';
   })
-  .catch((err) => {
+  .catch(() => {
     Swal.fire({
       title: 'Erro!',
       text: 'Por favor, digite uma moeda válida',
